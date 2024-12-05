@@ -1,0 +1,19 @@
+body {
+    margin: 0px;
+}
+div {
+    color: green;
+    background-color: orange;
+    margin: 0px;
+    width: 50%;
+    min-width: 400px;
+    border-color: red;
+    border-style: solid;
+    border-width: 4px;
+}
+.zenhan{
+    background-color: lightgreen;
+}
+.kouhan{
+    border-color: violet;
+}

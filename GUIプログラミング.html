@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="jp">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const txt = document.getElementById("txt");
+                const lbl = document.getElementById("lbl");
+                const btn = document.getElementById("btn");
+                // btn.addEventListener("click", () => {
+                //     const n = parseInt(txt.value);
+                //     lbl.innerHTML = n + "+1=" + (n + 1);
+                // });
+
+                // btn.addEventListener("click", () => {
+                //     const str = txt.value;
+                //     if (str === "") {
+                //         lbl.innerHTML = "秒数を入力してください";
+                //         return;
+                //     }
+                //     const n = parseInt(str);
+                //     lbl.innerHTML = "スタートしました";
+                //     const curTime = new Date();
+                //     while (new Date() - curTime < 1000 * n) {}
+                //     lbl.innerHTML = n + "秒経過しました";
+                // });
+
+                // btn.addEventListener("click", () => {
+                //     const n = parseInt(txt.value);
+                //     let id = setTimeout(() => {
+                //         lbl.innerHTML = n + "秒経過しました";
+                //     }, 1000 * n);
+                //     lbl.innerHTML = "スタートしました";
+                // });
+
+                // let id = -1;
+                // btn.addEventListener("click", () => {
+                //     if (id !== -1) {
+                //         clearTimeout(id);
+                //         id = -1;
+                //         lbl.innerHTML = "停止しました";
+                //         return;
+                //     }
+                //     const str = txt.value;
+                //     if (str === "") {
+                //         lbl.innerHTML = "秒数を入力してください";
+                //         return;
+                //     }
+                //     const n = parseInt(str);
+                //     id = setTimeout(() => {
+                //         lbl.innerHTML = n + "秒経過しました";
+                //         id = -1;
+                //     }, 1000 * n);
+                //     lbl.innerHTML = "スタートしました";
+                // });
+
+                let id = -1;
+                let msec = 0;
+                const itvl = 10;
+                btn.addEventListener("click", () => {
+                    if (id !== -1) {
+                        clearTimeout(id);
+                        id = -1;
+                        lbl.innerHTML = "停止しました";
+                        return;
+                    }
+                    const str = txt.value;
+                    if (str === "") {
+                        lbl.innerHTML = "秒数を入力してください";
+                        return;
+                    }
+                    msec = parseInt(str) * 1000;
+                    id = setInterval(() => {
+                        msec -= itvl;
+                        lbl.innerHTML = msec + "msec";
+                        if (msec <= 0) {
+                            clearInterval(id);
+                            id = -1;
+                            lbl.innerHTML = "終了";
+                        }
+                        lbl.innerHTML = n + "秒経過しました";
+                        id = -1;
+                    }, itvl);
+                    lbl.innerHTML = "スタートしました";
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <input type="text" id="txt" />
+        <button id="btn">Start</button>
+        <p id="lbl"></p>
+    </body>
+</html>
